@@ -9,13 +9,7 @@
 </template>
 
 <script>
-import Content from '~/components/Content';
-import MyComponent from '~/components/MyComponent';
 import BrBanner from '~/components/BrBanner';
-import BaseHeading from '~/components/BaseHeading';
-import StageComponent from '~/components/StageComponent';
-import TheHeader from '~/components/TheHeader';
-import TheFooter from '~/components/TheFooter';
 import axios from "axios";
 import { ref } from 'vue';
 

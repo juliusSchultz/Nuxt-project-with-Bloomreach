@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div>{{ properties.bannerText }}</div>
+    <p>Bannertext here below:</p>
+    <h2>{{ bannerText }}</h2>
   </div>
 </template>
 
@@ -16,7 +17,9 @@ export default {
   setup(props){
     const properties = computed(() => props.component.getParameters());
 
-    return { properties }
+    const bannerText = computed(() => properties.value?.bannerText || '#');
+
+    return { bannerText }
   },
 }
 </script>
