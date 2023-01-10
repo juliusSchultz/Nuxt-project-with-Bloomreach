@@ -16,15 +16,11 @@ import { ref } from 'vue';
 
 export default {
   name: 'App',
-  components: {
-    TheFooter
-  },
   setup(){
     const accountName = process.env.ACCOUNT_NAME;
     const channelName = process.env.CHANNEL_NAME;
     const pathName = window.location.pathname
     const pathSearch = window.location.search
-
 
     const configuration = ref({
       path: `${pathName}${pathSearch}`,

@@ -28,7 +28,7 @@ Password: z]N76}3vQRX7y8mt
 First you need to create an .env file that contains all the environment variables. You can do this by copying the .env.template and removing the .template extension.  
 
 To connect your application to a channel created in the CMS, you can add the following environment variables 
-1. As the username, you can insert the domain of the URL that comes right after https://.
+1. As the username, you can insert the domain of the URL that is shown before login to the Experience manager that comes right after https://.
    So if you have the URL https://developers.bloomreach.io/cms/?0 the necessary value for the field username would be developer.bloomreach.io.
 2. As the channel name, you can add the name of a created channel and replace spaces in the channel name with a dash.
 
