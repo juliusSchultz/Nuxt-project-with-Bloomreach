@@ -14,15 +14,17 @@ Password: z]N76}3vQRX7y8mt
 2. create a project in the project section by entering a project name and ticking "development project".
 3. add the channel to it
 4. clicking on the settings wheel in the project section next to channel name leads to the project settings. Change the project frontend url to the url where the app is currently running, f.ex. http://localhost:3000/
-5. add the site configuration for your components to your project. You can do that using the Components menu in the Site development(beta) section. F.ex. add the site configuration for the BrBanner like this  
+5. add the site configuration for your components to your project. You can do that using the components menu in the Site development(beta) section. F.ex. add the site configuration for the BrBanner like this  
    1. Add a new Component configuration
    2. ad the following parameters:  
    Display name: BrBanner  
    Extends: base/component  
    Ctype: BrBanner
-   3. In the Properties menu, you need to add any properties that you want the component to use. In the case of the BrBanner, the property configuration could contain one simple property with the following attributes.  
+   3. Click on "Create"
+   4. In the properties menu, you need to add any properties that you want the component to use. In the case of the BrBanner, the property configuration could contain one simple property with the following attributes.  
       Name: bannerText  
       Value type: String
+   5. Click on "Save"
 
 # Application setup to connect CMS
 First you need to create an .env file that contains all the environment variables. You can do this by copying the .env.template and removing the .template extension.  
@@ -36,7 +38,7 @@ To fill the components of the application you first need to run the application,
 Now go to the projects section and open your channel.
 
 You should now see a lock in the content section of your application. To finally make your content editable you can click on "Page", which opens a menu in which "Add to project" can be selected.
-It is now possible to add components via the components section. if you want to add furhter components you need to adapt the following: 
+It is now possible to add components via the components section. if you want to add further components you need to adapt the following: 
 1. add the component source code to your application
 2. add the component to the mapping in the _.vue
 3. add the adequate site configuration

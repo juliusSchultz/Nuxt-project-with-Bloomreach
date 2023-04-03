@@ -1,0 +1,102 @@
+/* --------------------------------------------------
+   Breakpoint Settings
+   --------------------------------------------------
+
+Copyright 2023 diva-e
+
+This code was developed in a hackweek project at diva-e
+ */
+
+$media-direction: min;  // min / max — default is min (mobile first)
+
+$breakpoints: (
+        'default': '',
+        'sm': 667px,
+        'md': 768px,
+        'lg': 1024px,
+        'xl': 1280px,
+        'xxl': 1536px,
+);
+
+/**
+ * Color Palette
+ */
+/* stylelint-disable scss/dollar-variable-pattern */
+$color--black: #000;
+$color--white: #fff;
+$color--grey: #e7e7e7;
+$color--greydark: #474348;
+
+/**
+ * Color Groups / Schemes
+ */
+$primary-background-color: $color--white;
+$primary-button-color: #000;
+$hover-button-color: #9600b5;
+$secondary-text-color: #9600b5;
+$primary-link-color: #006895;
+
+// This Variable is doubled
+// $primary-text-color: #474348;
+$primary-text-color: $color--black;
+$secondary-text-color: #9600b5;
+$accent-background-color: $color--black;
+$accent-link-color: $color--white;
+$accent-text-color: $color--white;
+$middle-grey: #c4c4c4;
+
+/**
+ * Fonts
+ */
+$font-primary: sans-serif;
+
+/**
+ * Spacings
+ */
+$spacing-default: 8px;
+$spacing-s: calc(#{$spacing-default} / 2); // 4
+$spacing-m: calc(#{$spacing-default} * 2); // 16
+$spacing-l: calc(#{$spacing-default} * 3); // 24
+$spacing-xl: calc(#{$spacing-default} * 4); // 32
+
+/**
+ * Headlines
+ */
+$font-size-default: 16px;
+$font-size-h1: 44px;
+$font-size-h2: 26px;
+$font-size-h3: 22px;
+$font-size-h4: 18px;
+$font-size-h5: 16px;
+$font-size-h6: 16px;
+
+/**
+ * line heights
+ */
+$line-height-default: 16px;
+$line-height-h1: 58px;
+$line-height-h2: 36px;
+$line-height-h3: 32px;
+$line-height-h4: 28px;
+$line-height-h5: 26px;
+$line-height-h6: 26px;
+
+/**
+ * Font weights
+ */
+$font-weight-default: 400;
+
+/**
+ * Fonts
+ */
+$font-primary: sans-serif;
+
+/**
+ * Spacings
+ */
+$spacing-default: 8px;
+$spacing-s: calc(#{$spacing-default} / 2); // 4
+$spacing-m: calc(#{$spacing-default} * 2); // 16
+$spacing-l: calc(#{$spacing-default} * 3); // 24
+$spacing-xl: calc(#{$spacing-default} * 4); // 32
+
