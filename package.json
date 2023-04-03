@@ -16,10 +16,10 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@bloomreach/vue-sdk": "^17.1.0",
+    "@bloomreach/vue-sdk": "^19.0.2",
     "@nuxtjs/dotenv": "^1.4.1",
     "axios": "^1.3.4",
-    "core-js": "^3.25.3",
+    "core-js": "^3.29.1",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
