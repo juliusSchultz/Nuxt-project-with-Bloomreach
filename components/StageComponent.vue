@@ -55,6 +55,7 @@ import ContentWrapper from '~/components/ContentWrapper';
 import ButtonLabel from '~/components/ButtonLabel';
 
 export default defineComponent({
+  name: "StageComponent",
   components: { ContentWrapper, ButtonLabel },
   props: {
     component: {

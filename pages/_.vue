@@ -1,9 +1,18 @@
 <template>
   <div id="app">
     <br-page :configuration="configuration" :mapping="mapping">
-      <main>
-        <br-component component="main"/>
-      </main>
+      <template v-slot:default="props">
+        <header>
+          <a :href="props.page.getUrl('/')">Home</a>
+          <br-component component="menu" />
+        </header>
+        <section>
+          <br-component component="main" />
+        </section>
+        <footer>
+          <br-component component="footer" />
+        </footer>
+      </template>
     </br-page>
   </div>
 </template>
