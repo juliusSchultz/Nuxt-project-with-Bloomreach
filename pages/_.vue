@@ -20,6 +20,7 @@
 <script>
 import MyComponent from '~/components/MyComponent';
 import BrBanner from '~/components/BrBanner';
+import Banner from '~/components/Banner';
 import BaseHeading from '~/components/BaseHeading';
 import StageComponent from '~/components/StageComponent';
 import TheHeader from '~/components/TheHeader';
@@ -41,7 +42,7 @@ export default {
       endpoint: `https://${accountName}/delivery/site/v1/channels/${channelName}/pages`,
       httpClient: axios,
     })
-    const mapping = ref({ BrBanner, StageComponent, MyComponent, BaseHeading, TheHeader, TheFooter })
+    const mapping = ref({ BrBanner, StageComponent, MyComponent, BaseHeading, TheHeader, TheFooter, Banner })
 
     return {
       configuration,
