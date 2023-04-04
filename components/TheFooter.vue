@@ -15,21 +15,18 @@
         <a
           v-for="(link, index) in links"
           :key="index"
-          :to="link.href"
+          :href="link.link"
           class="footer__link"
         >
           {{ link.title }}
         </a>
       </div>
-      <div class="footer__sub-text">
-        {{ subText }}
-      </div>
+      <div class="footer__sub-text" v-html="subText.value" />
     </ContentWrapper>
   </footer>
 </template>
 
 <script>
-
 import {
   computed, defineComponent
 } from 'vue';
@@ -43,15 +40,34 @@ export default defineComponent({
     component: {
       type: Object
     },
+    page: {
+      type: Object
+    }
   },
-  setup(props) {
-    const properties = computed(() => props.component.getParameters());
+  setup: function (props) {
+    // const properties = computed(() => props.component.getParameters());
+
+    const content = computed(() => props.component.getContent(props.page) || {})
+
+    const extractUrl = (link) => {
+      return props.page.getContent(link)?.getUrl() || ''
+    }
+
+    const links = computed(() => {
+      const internalLinks = []
+      for (const link of content.value.links) {
+        internalLinks.push({
+          link: extractUrl(link), title: link.title
+        })
+      }
+      return internalLinks;
+    })
 
     return {
-      links: computed(() => properties.value.links),
-      subText: computed(() => properties.value.subText),
-      backToTopText: computed(() => properties.value.backToTopText),
-      socialMediaItems: computed(() => properties.value.socialMediaItems),
+      links,
+      subText: content.value.subText,
+      backToTopText: content.value.backToTopText,
+      socialMediaItems: content.value.socialMediaItems,
     };
   },
 });

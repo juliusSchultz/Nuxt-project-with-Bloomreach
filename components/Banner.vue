@@ -2,7 +2,7 @@
   <div class="banner">
     <h2>{{ content.title }}</h2>
     <div v-html="content.text.value"/>
-    <img :src="imageSrc" alt="imageAlt"/>
+    <img :src="imageSrc" alt="image"/>
     <p><a :href=link>{{ content.ctalabel }}</a></p>
   </div>
 </template>

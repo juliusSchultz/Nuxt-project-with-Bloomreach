@@ -1,9 +1,3 @@
-/*
-* Copyright 2023 diva-e
-*
-* This code was partly developed in a hackweek project at diva-e
-*/
-
 <template>
   <div class="stage">
     <div
@@ -13,7 +7,7 @@
       <img
           class="stage__image-block--image"
           :src="imageSrc"
-          :alt="alt"
+          :alt="content.alt"
       >
     </div>
 
@@ -25,24 +19,25 @@
               :key="index"
           >
             <ButtonLabel
-                :component="{
-                link: button.link, alt: button.alt, text: button.text
-              }"
+                :link="extractUrl(button.link)"
+                :alt="button.alt"
+                :text="button.text"
+                :icon="button.icon"
+                :iconalt="button.iconalt"
                 class="stage__buttons--button"
             />
           </div>
         </div>
         <h2
-            v-if="subline"
+            v-if="content.subline.value"
             class="stage__text-block--subline"
-        >
-          {{ subline }}
-        </h2>
+            v-html="content.subline.value"
+        />
         <h1
-            v-if="headline"
+            v-if="content.headline"
             class="stage__text-block--headline"
         >
-          {{ headline }}
+          {{ content.headline }}
         </h1>
       </ContentWrapper>
     </div>
@@ -61,17 +56,20 @@ export default defineComponent({
     component: {
       type: Object
     },
+    page: {
+      type: Object
+    }
   },
   setup(props){
-    const properties = computed(() => props.component.getParameters());
+    const content = computed(() => props.component.getContent(props.page) || {})
+    const imageSrc = computed(() => props.page.getContent(content.value.image)?.getOriginal()?.getUrl() || '');
+    const buttons = computed(() => content.value.buttons)
 
-    const headline = computed(() => properties.value?.headline || '');
-    const subline = computed(() => properties.value?.subline || '');
-    const imageSrc = computed(() => properties.value?.imageSrc || '');
-    const alt = computed(() => properties.value?.alt || '');
-    const buttons = computed(() => properties.value?.buttons || []);
+    const extractUrl = (link) => {
+      return props.page.getContent(link)?.getUrl() || ''
+    }
 
-    return { properties, headline, subline, imageSrc, alt, buttons }
+    return { content, imageSrc, buttons, extractUrl }
   },
 })
 </script>
@@ -85,12 +83,14 @@ export default defineComponent({
   position: relative;
   height: 450px;
   overflow: hidden;
+
   &__image-block {
     z-index: 0;
     height: inherit;
     @include breakpoint(md) {
       height: unset;
     }
+
     &--image {
       width: 100%;
       height: 100%;
@@ -105,8 +105,9 @@ export default defineComponent({
     display: flex;
     gap: 10px;
     padding-bottom: 3px;
+    justify-content: center;
 
-    &--button{
+    &--button {
       border-radius: 50px;
       border: 1px solid white;
       background-color: initial;

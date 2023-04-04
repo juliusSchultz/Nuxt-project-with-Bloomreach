@@ -65,5 +65,9 @@ export default defineComponent({
       margin-left: 8px;
     }
   }
+
+  &__inner-wrapper {
+    display: flex;
+  }
 }
 </style>
