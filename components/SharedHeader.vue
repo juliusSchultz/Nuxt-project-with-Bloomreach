@@ -1,5 +1,6 @@
 <template>
   <header class="header">
+    <br-manage-content-button :content="document" />
     <ContentWrapper>
       <div class="header__wrapper">
         <div class="header__logo">
@@ -50,9 +51,11 @@ export default defineComponent({
     }
   },
   setup(props) {
-    // const properties = computed(() => props.component.getParameters());
-
-    const content = computed(() => props.component.getContent(props.page) || {})
+    const document = computed(() => props.page?.getContent(props.component.getProperties()?.document) || {})
+    if (props.component.getProperties()?.document === ''){
+      return
+    }
+    const content = computed(() => document?.value?.getData() || {})
 
     const extractUrl = (link) => {
       return props.page.getContent(link.link)?.getUrl() || ''
@@ -60,7 +63,7 @@ export default defineComponent({
 
     const metaLinks = computed(() => {
       const internalLinks = []
-      for (const link of content.value.links) {
+      for (const link of content.value?.links) {
         internalLinks.push({
           link: extractUrl(link), title: link.title
         })
@@ -69,6 +72,7 @@ export default defineComponent({
     })
 
     return {
+      document,
       metaLinks,
     };
   },
@@ -82,6 +86,7 @@ export default defineComponent({
 
 .header {
   border-bottom: 1px solid $color--black;
+  position: relative;
 
   &__wrapper {
     display: flex;

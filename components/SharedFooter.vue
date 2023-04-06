@@ -1,5 +1,6 @@
 <template>
   <footer class="footer">
+    <br-manage-content-button :content="document" />
     <ContentWrapper>
       <div class="footer__upper-wrapper">
         <div class="footer__social-media-wrapper"/>
@@ -15,7 +16,7 @@
           {{ link.title }}
         </a>
       </div>
-      <div class="footer__sub-text" v-html="subText.value" />
+      <div class="footer__sub-text" v-html="subText?.value" />
     </ContentWrapper>
   </footer>
 </template>
@@ -38,9 +39,11 @@ export default defineComponent({
     }
   },
   setup(props) {
-    // const properties = computed(() => props.component.getParameters());
-
-    const content = computed(() => props.component.getContent(props.page) || {})
+    const document = computed(() => props.page?.getContent(props.component.getProperties()?.document) || {})
+    if (props.component.getProperties()?.document === ''){
+      return
+    }
+    const content = computed(() => document?.value?.getData() || {})
 
     const extractUrl = (link) => {
       return props.page.getContent(link.link)?.getUrl() || ''
@@ -48,7 +51,7 @@ export default defineComponent({
 
     const links = computed(() => {
       const internalLinks = []
-      for (const link of content.value.links) {
+      for (const link of content.value?.links) {
         internalLinks.push({
           link: extractUrl(link), title: link.title
         })
@@ -57,10 +60,11 @@ export default defineComponent({
     })
 
     return {
+      document: document || {},
       links,
-      subText: content.value.subText,
-      backToTopText: content.value.backToTopText,
-      socialMediaItems: content.value.socialMediaItems,
+      subText: content.value?.subText || '',
+      backToTopText: content.value?.backToTopText || '',
+      socialMediaItems: content.value?.socialMediaItems || '',
     };
   },
 });
@@ -74,6 +78,7 @@ export default defineComponent({
   color: $accent-text-color;
   background-color: $accent-background-color;
   padding: 24px 0;
+  position: relative;
 
   &__link {
     color: $accent-text-color;

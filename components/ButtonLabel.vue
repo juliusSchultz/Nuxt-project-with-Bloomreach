@@ -10,7 +10,9 @@
         :src="icon"
         :alt="iconalt"
     >
-    <span class="button__text"> {{ text }} </span>
+    <span class="button__text">
+      <a :href=link class="button__text">{{ text }}</a>
+    </span>
   </button>
 </template>
 
@@ -21,7 +23,7 @@ export default defineComponent({
   name: 'ButtonLabel',
   props: {
     link: {
-      type: Object
+      type: String
     },
     alt: {
       type: String
@@ -50,6 +52,15 @@ export default defineComponent({
   &:hover {
     border-color: $secondary-text-color;
     color: $secondary-text-color;
+
+    .button__text {
+      color: $secondary-text-color;
+    }
+  }
+
+  &__text {
+    color: white;
+    text-decoration: none;
   }
 }
 </style>

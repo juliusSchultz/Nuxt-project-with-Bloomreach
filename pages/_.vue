@@ -3,7 +3,6 @@
     <br-page :configuration="configuration" :mapping="mapping">
       <template v-slot:default="props">
         <header>
-          <a :href="props.page.getUrl('/')">Home</a>
           <br-component component="menu" />
         </header>
         <section>
@@ -21,6 +20,9 @@
 import MyComponent from '~/components/MyComponent';
 import BrBanner from '~/components/BrBanner';
 import Banner from '~/components/Banner';
+import SharedBanner from '~/components/SharedBanner';
+import SharedFooter from '~/components/SharedFooter';
+import SharedHeader from '~/components/SharedHeader';
 import BaseHeading from '~/components/BaseHeading';
 import StageComponent from '~/components/StageComponent';
 import TheHeader from '~/components/TheHeader';
@@ -42,7 +44,7 @@ export default {
       endpoint: `https://${accountName}/delivery/site/v1/channels/${channelName}/pages`,
       httpClient: axios,
     })
-    const mapping = ref({ BrBanner, StageComponent, MyComponent, BaseHeading, TheHeader, TheFooter, Banner })
+    const mapping = ref({ BrBanner, StageComponent, MyComponent, BaseHeading, TheHeader, TheFooter, Banner, SharedBanner, SharedFooter, SharedHeader })
 
     return {
       configuration,

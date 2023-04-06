@@ -2,7 +2,7 @@
   <div class="banner">
     <h2>{{ content.title }}</h2>
     <div v-html="content.text.value"/>
-    <img :src="imageSrc" alt="image"/>
+    <img v-if="imageSrc" :src="imageSrc" alt="image"/>
     <p><a :href=link>{{ content.ctalabel }}</a></p>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss">
 .banner {
-  background-color: orange;
+  background-color: white;
   color: steelblue;
   padding: 10px;
 }

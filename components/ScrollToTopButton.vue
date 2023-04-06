@@ -1,9 +1,3 @@
-/*
-* Copyright 2023 diva-e
-*
-* This code was partly developed in a hackweek project at diva-e
-*/
-
 <template>
   <div
     class="scroll-to-top-button"
@@ -58,7 +52,6 @@ export default defineComponent({
     color: $secondary-text-color;
   }
 
-  // Todo use variable
   @include breakpoint (md) {
     .scroll-to-top-button__text {
       display: inline-block;
