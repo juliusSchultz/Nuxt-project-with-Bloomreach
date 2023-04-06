@@ -8,6 +8,7 @@
 import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
+  name: 'ContentWrapper',
   props: {
     breakout: {
       type: Boolean,

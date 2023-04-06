@@ -39,6 +39,7 @@ import { computed, defineComponent } from 'vue';
 import ContentWrapper from '~/components/ContentWrapper';
 
 export default defineComponent({
+  name: 'SharedHeader',
   components: {
     ContentWrapper,
   },

@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-import {defineComponent} from "vue/types/index";
+import { computed, defineComponent } from 'vue';
 
 export default defineComponent({
+  name: 'SharedBanner',
   props: {
     component: {
       type: Object

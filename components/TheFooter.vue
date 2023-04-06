@@ -28,6 +28,7 @@ import ContentWrapper from '~/components/ContentWrapper';
 import ScrollToTopButton from '~/components/ScrollToTopButton';
 
 export default defineComponent({
+  name: 'TheFooter',
   components: { ContentWrapper, ScrollToTopButton },
   props: {
     component: {

@@ -29,6 +29,7 @@ import ContentWrapper from '~/components/ContentWrapper';
 import ScrollToTopButton from '~/components/ScrollToTopButton';
 
 export default defineComponent({
+  name: 'SharedFooter',
   components: { ContentWrapper, ScrollToTopButton },
   props: {
     component: {

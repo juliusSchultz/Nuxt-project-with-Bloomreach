@@ -9,6 +9,7 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent ({
+  name: 'BrBanner',
   props: {
     component: {
       type: Object

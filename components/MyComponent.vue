@@ -8,6 +8,7 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'MyComponent',
   props: {
     component: {
       type: Object
