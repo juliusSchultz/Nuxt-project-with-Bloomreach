@@ -23,7 +23,6 @@ import Banner from '~/components/Banner';
 import SharedBanner from '~/components/SharedBanner';
 import SharedFooter from '~/components/SharedFooter';
 import SharedHeader from '~/components/SharedHeader';
-import BaseHeading from '~/components/BaseHeading';
 import StageComponent from '~/components/StageComponent';
 import TheHeader from '~/components/TheHeader';
 import TheFooter from '~/components/TheFooter';
@@ -44,7 +43,7 @@ export default {
       endpoint: `https://${accountName}/delivery/site/v1/channels/${channelName}/pages`,
       httpClient: axios,
     })
-    const mapping = ref({ BrBanner, StageComponent, MyComponent, BaseHeading, TheHeader, TheFooter, Banner, SharedBanner, SharedFooter, SharedHeader })
+    const mapping = ref({ BrBanner, StageComponent, MyComponent, TheHeader, TheFooter, Banner, SharedBanner, SharedFooter, SharedHeader })
 
     return {
       configuration,

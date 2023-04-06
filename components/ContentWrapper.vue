@@ -1,9 +1,3 @@
-/*
-* Copyright 2023 diva-e
-*
-* This code was partly developed in a hackweek project at diva-e
-*/
-
 <template>
   <div :class="classList">
     <slot />

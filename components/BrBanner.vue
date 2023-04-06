@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, defineComponent } from 'vue'
 
-export default {
+export default defineComponent ({
   props: {
     component: {
       type: Object
@@ -21,5 +21,5 @@ export default {
 
     return { bannerText }
   },
-}
+})
 </script>

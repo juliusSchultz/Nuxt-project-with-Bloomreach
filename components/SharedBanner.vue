@@ -10,8 +10,9 @@
 
 <script>
 import { computed } from 'vue';
+import {defineComponent} from "vue/types/index";
 
-export default {
+export default defineComponent({
   props: {
     component: {
       type: Object
@@ -37,5 +38,5 @@ export default {
       link,
     }
   },
-}
+})
 </script>
