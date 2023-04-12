@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>Hallo</div>
     <br-page :configuration="configuration" :mapping="mapping">
       <template v-slot:default="props">
         <header>
