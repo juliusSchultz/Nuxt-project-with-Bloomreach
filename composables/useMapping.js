@@ -1,4 +1,3 @@
-import MyComponent from '~/components/MyComponent';
 import BrBanner from '~/components/BrBanner';
 import Banner from '~/components/Banner';
 import SharedBanner from '~/components/SharedBanner';
@@ -10,7 +9,7 @@ import TheFooter from '~/components/TheFooter';
 import { ref } from 'vue';
 
 export const useMapping = () => {
-    const mapping = ref({ BrBanner, StageComponent, MyComponent, TheHeader, TheFooter, Banner, SharedBanner, SharedFooter, SharedHeader })
+    const mapping = ref({ BrBanner, StageComponent, TheHeader, TheFooter, Banner, SharedBanner, SharedFooter, SharedHeader })
 
     return { mapping }
 }
