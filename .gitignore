@@ -98,3 +98,6 @@ lsg-public
 # linting output
 report
 /package-lock.json
+
+# Local Netlify folder
+.netlify
