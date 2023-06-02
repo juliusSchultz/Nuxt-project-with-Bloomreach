@@ -27,6 +27,7 @@ import {
 } from 'vue';
 import ContentWrapper from '~/components/ContentWrapper';
 import ScrollToTopButton from '~/components/ScrollToTopButton';
+import { useContent } from "~/composables/useContent";
 
 export default defineComponent({
   name: 'SharedFooter',
@@ -40,21 +41,17 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const document = computed(() => props.page?.getContent(props.component.getProperties()?.document) || {})
+    const { document, documentContent, extractUrlOfLink } = useContent(props.component, props.page)
+
     if (props.component.getProperties()?.document === ''){
       return
-    }
-    const content = computed(() => document?.value?.getData() || {})
-
-    const extractUrl = (link) => {
-      return props.page.getContent(link.link)?.getUrl() || ''
     }
 
     const links = computed(() => {
       const internalLinks = []
-      for (const link of content.value?.links) {
+      for (const link of documentContent.value?.links) {
         internalLinks.push({
-          link: extractUrl(link), title: link.title
+          link: extractUrlOfLink(link), title: link.title
         })
       }
       return internalLinks;
@@ -63,9 +60,9 @@ export default defineComponent({
     return {
       document: document || {},
       links,
-      subText: content.value?.subText || '',
-      backToTopText: content.value?.backToTopText || '',
-      socialMediaItems: content.value?.socialMediaItems || '',
+      subText: documentContent.value?.subText || '',
+      backToTopText: documentContent.value?.backToTopText || '',
+      socialMediaItems: documentContent.value?.socialMediaItems || '',
     };
   },
 });

@@ -37,6 +37,7 @@
 <script>
 import { computed, defineComponent } from 'vue';
 import ContentWrapper from '~/components/ContentWrapper';
+import { useContent } from "~/composables/useContent";
 
 export default defineComponent({
   name: 'SharedHeader',
@@ -52,21 +53,17 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const document = computed(() => props.page?.getContent(props.component.getProperties()?.document) || {})
+    const { document, documentContent, extractUrlOfLink } = useContent(props.component, props.page)
+
     if (props.component.getProperties()?.document === ''){
       return
-    }
-    const content = computed(() => document?.value?.getData() || {})
-
-    const extractUrl = (link) => {
-      return props.page.getContent(link.link)?.getUrl() || ''
     }
 
     const metaLinks = computed(() => {
       const internalLinks = []
-      for (const link of content.value?.links) {
+      for (const link of documentContent.value?.links) {
         internalLinks.push({
-          link: extractUrl(link), title: link.title
+          link: extractUrlOfLink(link), title: link.title
         })
       }
       return internalLinks;

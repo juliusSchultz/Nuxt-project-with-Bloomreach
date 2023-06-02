@@ -1,13 +1,13 @@
 <template>
   <div class="stage">
     <div
-        v-if="imageSrc"
+        v-if="extractUrlOfImage(componentContent.image)"
         class="stage__image-block"
     >
       <img
           class="stage__image-block--image"
-          :src="imageSrc"
-          :alt="content.alt"
+          :src="extractUrlOfImage(componentContent.image)"
+          :alt="componentContent.alt"
       >
     </div>
 
@@ -15,11 +15,11 @@
       <ContentWrapper class="stage__text-wrapper">
         <div class="stage__buttons">
           <div
-              v-for="(button, index) in buttons"
+              v-for="(button, index) in componentContent.buttons"
               :key="index"
           >
             <ButtonLabel
-                :link="extractUrl(button.link)"
+                :link="extractUrlOfLink(button.link)"
                 :alt="button.alt"
                 :text="button.text"
                 :icon="button.icon"
@@ -29,15 +29,15 @@
           </div>
         </div>
         <h2
-            v-if="content.subline.value"
+            v-if="componentContent.subline.value"
             class="stage__text-block--subline"
-            v-html="content.subline.value"
+            v-html="componentContent.subline.value"
         />
         <h1
-            v-if="content.headline"
+            v-if="componentContent.headline"
             class="stage__text-block--headline"
         >
-          {{ content.headline }}
+          {{ componentContent.headline }}
         </h1>
       </ContentWrapper>
     </div>
@@ -45,9 +45,10 @@
 </template>
 
 <script>
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import ContentWrapper from '~/components/ContentWrapper';
 import ButtonLabel from '~/components/ButtonLabel';
+import { useContent } from "~/composables/useContent";
 
 export default defineComponent({
   name: 'StageComponent',
@@ -61,15 +62,12 @@ export default defineComponent({
     }
   },
   setup(props){
-    const content = computed(() => props.component.getContent(props.page) || {})
-    const imageSrc = computed(() => props.page.getContent(content.value.image)?.getOriginal()?.getUrl() || '');
-    const buttons = computed(() => content.value.buttons)
+    const {
+      componentContent,
+      extractUrlOfLink,
+      extractUrlOfImage } = useContent(props.component, props.page)
 
-    const extractUrl = (link) => {
-      return props.page.getContent(link)?.getUrl() || ''
-    }
-
-    return { content, imageSrc, buttons, extractUrl }
+    return { componentContent, extractUrlOfLink, extractUrlOfImage }
   },
 })
 </script>

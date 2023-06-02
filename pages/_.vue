@@ -1,34 +1,21 @@
 <template>
   <div id="app">
-    <br-page :configuration="configuration" :mapping="mapping">
-      <template v-slot:default="props">
-        <header>
-          <br-component component="menu" />
-        </header>
-        <section>
-          <br-component component="main" />
-        </section>
-        <footer>
-          <br-component component="footer" />
-        </footer>
-      </template>
-    </br-page>
+    <CmsPage :mapping="mapping" />
   </div>
 </template>
 
 <script>
-import { useConfiguration } from '~/composables/useConfiguration.js'
 import { useMapping } from '~/composables/useMapping.js'
+import { useContent } from "~/composables/useContent";
 
 export default {
   name: 'App',
   setup(){
-    const { configuration } = useConfiguration()
     const { mapping } = useMapping()
 
     return {
-      configuration,
       mapping,
+      useContent,
     }
   },
 }

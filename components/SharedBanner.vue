@@ -1,15 +1,18 @@
 <template>
   <div style="background-color: grey; color: white; padding: 10px; position: relative">
     <br-manage-content-button :content="document" />
-    <h2>{{ content?.title }}</h2>
-    <div v-html="content?.text?.value"></div>
+    <h2>{{ documentContent?.title }}</h2>
+    <div v-html="documentContent?.text?.value"></div>
     <img :src="imageSrc" alt="image"/>
-    <p><a :href=link>{{content?.ctalabel}}</a></p>
+    <p>
+      <a :href=link>{{documentContent?.ctalabel}}</a>
+    </p>
   </div>
 </template>
 
 <script>
 import { computed, defineComponent } from 'vue';
+import { useContent } from '~/composables/useContent.js'
 
 export default defineComponent({
   name: 'SharedBanner',
@@ -22,18 +25,16 @@ export default defineComponent({
     }
   },
   setup(props){
-    const document = computed(() => props.page?.getContent(props.component.getProperties()?.document) || {})
+    const { document, documentContent, imageSrc, link } = useContent(props.component, props.page)
+
     if (props.component.getProperties()?.document === ''){
       return
     }
-    const content = computed(() => document?.value?.getData() || {})
-    const imageSrc = computed(() => props.page.getContent(content.value.image)?.getOriginal()?.getUrl() || '');
-    const link = computed(() => props.page.getContent(content.value.ctalink)?.getUrl() || '');
 
 
     return {
       document,
-      content,
+      documentContent,
       imageSrc,
       link,
     }

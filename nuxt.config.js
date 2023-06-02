@@ -25,7 +25,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/brxm.ts' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -38,7 +37,8 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@txp-cms/bloomreach'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -47,5 +47,9 @@ export default {
 
   generate: {
     fallback: true
+  },
+
+  bloomreach: {
+    endpoint: process.env.ENDPOINT
   }
 }
